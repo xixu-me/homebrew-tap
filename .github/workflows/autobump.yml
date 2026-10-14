@@ -61,3 +61,35 @@ jobs:
             args+=(--bump-synced)
           fi
           brew bump "${args[@]}"
+
+      - name: Enable auto-merge for bump pull requests
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PACKAGE_KIND: ${{ matrix.package_kind }}
+        run: |
+          if [[ "$PACKAGE_KIND" == formulae ]]; then
+            path_prefix=Formula/
+          else
+            path_prefix=Casks/
+          fi
+
+          gh pr list \
+            --repo "$GITHUB_REPOSITORY" \
+            --state open \
+            --base main \
+            --limit 100 \
+            --json number,author,headRefName,files |
+            jq -r \
+              --arg path_prefix "$path_prefix" \
+              '.[]
+               | select(.author.login == "app/github-actions")
+               | select(.headRefName | startswith("bump-"))
+               | select(any(.files[]; .path | startswith($path_prefix)))
+               | .number' |
+            while read -r pull_request; do
+              [[ -z "$pull_request" ]] && continue
+              gh pr merge "$pull_request" \
+                --repo "$GITHUB_REPOSITORY" \
+                --auto \
+                --squash
+            done
