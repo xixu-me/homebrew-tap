@@ -5,6 +5,11 @@ class Magpie < Formula
   sha256 "fb81fbae46be7e1d2e3cf3757e912795a37ee0e492c3bc6c7a6dc3071240b546"
   license "MIT"
 
+  livecheck do
+    url :stable
+    strategy :github_latest
+  end
+
   depends_on "go" => :build
 
   def install
