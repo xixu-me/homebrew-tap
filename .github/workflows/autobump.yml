@@ -51,8 +51,10 @@ jobs:
       - name: Bump packages
         env:
           HOMEBREW_GITHUB_API_TOKEN: ${{ secrets.AUTOBUMP_TOKEN || secrets.GITHUB_TOKEN }}
-          HOMEBREW_GIT_COMMITTER_NAME: ${{ steps.git_setup.outputs.name }}
-          HOMEBREW_GIT_COMMITTER_EMAIL: ${{ steps.git_setup.outputs.email }}
+          HOMEBREW_GIT_NAME: github-actions[bot]
+          HOMEBREW_GIT_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
+          HOMEBREW_GIT_COMMITTER_NAME: github-actions[bot]
+          HOMEBREW_GIT_COMMITTER_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
           TAP_NAME: ${{ steps.set-up-homebrew.outputs.tap-name }}
           PACKAGE_KIND: ${{ matrix.package_kind }}
         run: |
