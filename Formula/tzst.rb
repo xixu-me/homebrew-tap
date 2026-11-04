@@ -3,8 +3,8 @@ class Tzst < Formula
 
   desc "Zstandard-compressed tar archive utility"
   homepage "https://github.com/xixu-me/tzst"
-  url "https://github.com/xixu-me/tzst/archive/refs/tags/v1.3.3.tar.gz"
-  sha256 "d7c2ff021d2660f025868e3df17b3cc1db8d6dcebdd42600b37c2c85147bfc18"
+  url "https://github.com/xixu-me/tzst/archive/refs/tags/v1.3.4.tar.gz"
+  sha256 "a00e4f0d72a39aabe3d757697a3d0f5afd7bd361fa0a053ca6bb0637455ace2b"
   license "BSD-3-Clause"
 
   depends_on "cffi"
