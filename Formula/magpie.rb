@@ -1,8 +1,8 @@
 class Magpie < Formula
   desc "Unified gateway and model switcher for AI coding agents"
   homepage "https://usemagpie.ai"
-  url "https://github.com/yetone/magpie/archive/refs/tags/v0.1.3644.tar.gz"
-  sha256 "f470b947cd2cc1727b7fb75facce330e46f173eb91c37d6609879d3dd24dd26c"
+  url "https://github.com/yetone/magpie/archive/refs/tags/v0.1.3665.tar.gz"
+  sha256 "4fefa274472ec1af910d5021a17967ac2a0cef90f3c8d83adbb1fb1c652e29f0"
   license "MIT"
 
   livecheck do
